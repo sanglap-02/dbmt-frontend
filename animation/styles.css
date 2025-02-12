@@ -1,0 +1,90 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 800px;
+}
+
+.database {
+    width: 100px;
+    height: 150px;
+    background-color: #4CAF50;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.data-block {
+    width: 60px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    animation: moveData 2s infinite;
+}
+
+@keyframes moveData {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(200px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.migration-path {
+    width: 200px;
+    height: 10px;
+    background-color: #4CAF50;
+    position: relative;
+}
+
+.migration-path::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    top: -5px;
+    left: 0;
+    animation: moveDot 2s infinite;
+}
+
+@keyframes moveDot {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+.source .data-block {
+    animation-delay: 0s;
+}
+
+.destination .data-block {
+    animation-delay: 1s;
+}

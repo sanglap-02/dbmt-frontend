@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Form Design</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registration Form</h1>
+        <form>
+            <!-- Section 1: Personal Information -->
+            <fieldset>
+                <legend>Personal Information</legend>
+                <div class="input-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" placeholder="Enter your first name" required>
+                </div>
+                <div class="input-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" placeholder="Enter your last name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="input-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" required>
+                </div>
+            </fieldset>
+
+            <!-- Section 2: Address Information -->
+            <fieldset>
+                <legend>Address Information</legend>
+                <div class="input-group">
+                    <label for="street">Street Address</label>
+                    <input type="text" id="street" placeholder="Enter your street address" required>
+                </div>
+                <div class="input-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" placeholder="Enter your city" required>
+                </div>
+                <div class="input-group">
+                    <label for="state">State</label>
+                    <input type="text" id="state" placeholder="Enter your state" required>
+                </div>
+                <div class="input-group">
+                    <label for="zip">Zip Code</label>
+                    <input type="text" id="zip" placeholder="Enter your zip code" required>
+                </div>
+                <div class="input-group">
+                    <label for="country">Country</label>
+                    <input type="text" id="country" placeholder="Enter your country" required>
+                </div>
+            </fieldset>
+
+            <!-- Section 3: Account Information -->
+            <fieldset>
+                <legend>Account Information</legend>
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Choose a username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Choose a password" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+            </fieldset>
+
+            <!-- Add more sections and inputs as needed -->
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB Migration Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="form-container" id="main-form">
+        <h1>Database Migration Tool</h1>
+        <form id="migrationForm">
+
+            <fieldset>
+                <legend>Source Database</legend>
+                <div class="input-group">
+                    <label>DB Source Type:</label>
+                    <input type="text" id="dbSourceType" required>
+                </div>
+                <div class="input-group">
+                    <label>DB Source Host:</label>
+                    <input type="text" id="dbSourceHost" required>
+                </div>
+                <div class="input-group">
+                    <label>DB Source Port:</label>
+                    <input type="text" id="dbSourcePort" required>
+                </div>
+                <div class="input-group">
+                    <label>DB Source Name:</label>
+                    <input type="text" id="dbSourceName" required>
+                </div>
+                <div class="input-group">
+                    <label>DB Source Username:</label>
+                    <input type="text" id="dbSourceUsername" required>
+                </div>
+                <div class="input-group">
+                    <label>DB Source Password:</label>
+                    <input type="password" id="dbSourcePassword" required>
+                </div>
+                <div class="input-group">
+                    <label>Use SSH for Source:</label>
+                    <select id="sourceUseSSH">
+                        <option value="false">No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <div id="sshSourceFields">
+                        <label>SSH Host:</label>
+                        <input type="text" id="sourceSSHHost">
+
+                        <label>SSH Port:</label>
+                        <input type="number" id="sourceSSHPort">
+
+                        <label>SSH Username:</label>
+                        <input type="text" id="sourceSSHUsername">
+
+                        <label>SSH Password:</label>
+                        <input type="file" id="sourceSSHPassword">
+
+                        <label>SSH Local Port:</label>
+                        <input type="text" id="sourceSSHLocalPort">
+                    </div>
+                </div>
+            </fieldset>
+
+
+
+            <fieldset>
+                <legend>target Database</legend>
+                <div class="input-group">
+                    <label>DB Sink Type:</label>
+                    <input type="text" id="dbSinkType" required>
+                </div>
+                <div class="input-group">
+                    <label>DB Sink Host:</label>
+                    <input type="text" id="dbSinkHost" required>
+                </div>
+                <div class="input-group">
+                    <label>DB Sink Port:</label>
+                    <input type="text" id="dbSinkPort" required>
+                </div>
+                <div class="input-group">
+                    <label>DB Sink Name:</label>
+                    <input type="text" id="dbSinkName" required>
+                </div>
+                <div class="input-group">
+                    <label>DB Sink Username:</label>
+                    <input type="text" id="dbSinkUsername" required>
+                </div>
+                <div class="input-group">
+                    <label>DB Sink Password:</label>
+                    <input type="password" id="dbSinkPassword" required>
+                </div>
+                <div class="input-group">
+                    <label>Use SSH for Sink:</label>
+                    <select id="sinkUseSSH">
+                        <option value="false">No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <div id="sshSinkFields">
+                        <label>SSH Host:</label>
+                        <input type="text" id="sinkSSHHost">
+
+                        <label>SSH Port:</label>
+                        <input type="number" id="sinkSSHPort">
+
+                        <label>SSH Username:</label>
+                        <input type="text" id="sinkSSHUsername">
+
+                        <label>SSH Password:</label>
+                        <input type="file" id="sinkSSHPassword">
+
+                        <label>SSH Local Port:</label>
+                        <input type="text" id="sinkSSHLocalPort">
+                    </div>
+                </div>
+            </fieldset>
+
+
+
+            <fieldset>
+                <legend>Application configs</legend>
+                <div class="input-group">
+                    <label>Batch Size:</label>
+                    <input type="number" id="batchSize" required>
+                </div>
+                <div class="input-group">
+                    <label>Check Foreign Key on Exit:</label>
+                    <select id="checkForeignKeyOnExit">
+                        <option value="false">No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Number of Threads:</label>
+                    <input type="number" id="numberOfThreads" required>
+                </div>
+                <div class="input-group">
+                    <label>Create Only Schema:</label>
+                    <select id="createOnlySchema">
+                        <option value="false">No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Fetch Partition:</label>
+                    <input type="number" id="fetchpartition" required>
+                </div>
+
+            </fieldset>
+
+            <button type="submit">Start Migration</button>
+        </form>
+
+        <p id="statusMessage"></p>
+
+
+        <div id="hidden">
+            <div class="container-animation" id="container-animation">
+                <div class="database source">
+                    <div class="data-block"></div>
+                    <div class="data-block"></div>
+                    <div class="data-block"></div>
+                </div>
+                <div class="migration-path"></div>
+                <div class="database destination">
+                    <div class="data-block"></div>
+                    <div class="data-block"></div>
+                    <div class="data-block"></div>
+                </div>
+            </div>
+        </div>
+
+        
+
+
+
+        <!-- Log Section -->
+        <div id="logSection">
+            <h3>Please check the detailed log in Rancher</h3>
+            <h2>Migration Logs</h2>
+            <button id="logBtn">Refresh</button>
+            <pre id="logOutput"></pre>
+        </div>
+
+
+       
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
