@@ -32,18 +32,11 @@ document.getElementById("migrationForm").addEventListener("submit", function (ev
         sourceSSHUsername: document.getElementById("sourceSSHUsername").value.trim() || "false",
         sourceSSHPassword: document.getElementById("sourceSSHPassword").value.trim() || "false",
         sourceSSHLocalPort: parseInt(document.getElementById("sourceSSHLocalPort").value) || 0,
-        dbSinkType: document.getElementById("dbSinkType").value.trim(),
-        dbSinkHost: document.getElementById("dbSinkHost").value.trim(),
-        dbSinkPort: parseInt(document.getElementById("dbSinkPort").value) || 0,
-        dbSinkName: document.getElementById("dbSinkName").value.trim(),
-        dbSinkUsername: document.getElementById("dbSinkUsername").value.trim(),
-        dbSinkPassword: document.getElementById("dbSinkPassword").value.trim(),
-        sinkUseSSH: document.getElementById("sinkUseSSH").value,
-        sinkSSHHost: document.getElementById("sinkSSHHost").value.trim() || "false",
-        sinkSSHPort: parseInt(document.getElementById("sinkSSHPort").value) || 0,
-        sinkSSHUsername: document.getElementById("sinkSSHUsername").value.trim() || "false",
-        sinkSSHPassword: document.getElementById("sinkSSHPassword").value.trim() || "false",
-        sinkSSHLocalPort: parseInt(document.getElementById("sinkSSHLocalPort").value) || 0,
+        sinkS3AccessKey: document.getElementById("sinkS3AccessKey").value.trim(),
+        sinkS3SecretKey: document.getElementById("sinkS3SecretKey").value.trim(),
+        sinkS3BucketName: document.getElementById("sinkS3BucketName").value.trim(),
+        region: document.getElementById("region").value.trim(),
+        s3DataBasename: document.getElementById("s3DataBasename").value.trim(),
         batchSize: parseInt(document.getElementById("batchSize").value) || 0,
         checkForeignKeyOnExit: document.getElementById("checkForeignKeyOnExit").value,
         numberOfThreads: parseInt(document.getElementById("numberOfThreads").value) || 0,
@@ -60,7 +53,7 @@ document.getElementById("migrationForm").addEventListener("submit", function (ev
     }
 
     const sourceSSHPasswordFile = document.getElementById("sourceSSHPassword").files[0];
-    const sinkSSHPasswordFile = document.getElementById("sinkSSHPassword").files[0];
+    const sinkSSHPasswordFile=false
 
     if (sourceSSHPasswordFile || sinkSSHPasswordFile) {
         const reader1 = new FileReader();
@@ -76,11 +69,11 @@ document.getElementById("migrationForm").addEventListener("submit", function (ev
             }
         };
     
-        reader2.onload = function (e) {
-            formData.sinkSSHPassword = sinkSSHPasswordFile ? e.target.result.trim() : formData.sinkSSHPassword;
-            // Proceed with the API call
-            submitMigration(formData);
-        };
+        // reader2.onload = function (e) {
+        //     formData.sinkSSHPassword = sinkSSHPasswordFile ? e.target.result.trim() : formData.sinkSSHPassword;
+        //     // Proceed with the API call
+        //     submitMigration(formData);
+        // };
     
         if (sourceSSHPasswordFile) {
             reader1.readAsText(sourceSSHPasswordFile);
@@ -113,7 +106,7 @@ function submitMigration(formData) {
             const jobId = jobIdMatch[1];
             statusMessage.textContent = `Migration started. Job ID: ${jobId}`;
             statusMessage.style.color = "green";
-            connectToLogs(jobId);
+            // connectToLogs(jobId);
         } else {
             alert('A migration job is already running. Please wait for the job to complete');
             throw new Error("Could not extract Job ID from response.");
@@ -171,8 +164,8 @@ function fetchLogs() {
 function validateFormData(formData) {
     const requiredFields = [
         "dbSourceType", "dbSourceHost", "dbSourcePort", "dbSourceName",
-        "dbSourceUsername", "dbSourcePassword", "dbSinkType", "dbSinkHost",
-        "dbSinkPort", "dbSinkName", "dbSinkUsername", "dbSinkPassword"
+        "dbSourceUsername", "dbSourcePassword", "sinkS3AccessKey", "sinkS3SecretKey",
+        "sinkS3BucketName", "region", "s3DataBasename"
     ];
 
     for (const field of requiredFields) {
@@ -194,10 +187,10 @@ document.getElementById("sourceUseSSH").addEventListener("change", function () {
     toggleSSHFields(this.value, "sshSourceFields");
 });
 
-document.getElementById("sinkUseSSH").addEventListener("change", function () {
-    toggleSSHFields(this.value, "sshSinkFields");
-});
+// document.getElementById("sinkUseSSH").addEventListener("change", function () {
+//     toggleSSHFields(this.value, "sshSinkFields");
+// });
 
 // Initialize SSH fields visibility
 toggleSSHFields(document.getElementById("sourceUseSSH").value, "sshSourceFields");
-toggleSSHFields(document.getElementById("sinkUseSSH").value, "sshSinkFields");
+// toggleSSHFields(document.getElementById("sinkUseSSH").value, "sshSinkFields");
