@@ -71,54 +71,26 @@
             <fieldset>
                 <legend>target Database</legend>
                 <div class="input-group">
-                    <label>DB Sink Type:</label>
-                    <input type="text" id="dbSinkType" required>
+                    <label>sinkS3AccessKey</label>
+                    <input type="text" id="sinkS3AccessKey" required>
                 </div>
                 <div class="input-group">
-                    <label>DB Sink Host:</label>
-                    <input type="text" id="dbSinkHost" required>
+                    <label>sinkS3SecretKey:</label>
+                    <input type="text" id="sinkS3SecretKey" required>
                 </div>
                 <div class="input-group">
-                    <label>DB Sink Port:</label>
-                    <input type="text" id="dbSinkPort" required>
+                    <label>sinkS3BucketName:</label>
+                    <input type="text" id="sinkS3BucketName" required>
                 </div>
                 <div class="input-group">
-                    <label>DB Sink Name:</label>
-                    <input type="text" id="dbSinkName" required>
+                    <label>region:</label>
+                    <input type="text" id="region" required>
                 </div>
                 <div class="input-group">
-                    <label>DB Sink Username:</label>
-                    <input type="text" id="dbSinkUsername" required>
+                    <label>s3DataBasename:</label>
+                    <input type="text" id="s3DataBasename" required>
                 </div>
-                <div class="input-group">
-                    <label>DB Sink Password:</label>
-                    <input type="password" id="dbSinkPassword" required>
-                </div>
-                <div class="input-group">
-                    <label>Use SSH for Sink:</label>
-                    <select id="sinkUseSSH">
-                        <option value="false">No</option>
-                        <option value="true">Yes</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <div id="sshSinkFields">
-                        <label>SSH Host:</label>
-                        <input type="text" id="sinkSSHHost">
-
-                        <label>SSH Port:</label>
-                        <input type="number" id="sinkSSHPort">
-
-                        <label>SSH Username:</label>
-                        <input type="text" id="sinkSSHUsername">
-
-                        <label>SSH Password:</label>
-                        <input type="file" id="sinkSSHPassword">
-
-                        <label>SSH Local Port:</label>
-                        <input type="text" id="sinkSSHLocalPort">
-                    </div>
-                </div>
+                
             </fieldset>
 
 
